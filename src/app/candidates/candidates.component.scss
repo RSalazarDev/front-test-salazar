@@ -1,0 +1,30 @@
+  button {
+    margin-top: 30px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  mat-form-field{
+    margin:5px;
+    margin-left:0px;
+  }
+  
+  button:hover {
+    background-color: #388e3c;
+  }
+
+  label{
+    margin-right: 20px;
+  }
+  
+  .container{
+    margin: 50px
+  }
+
+  td,th{
+text-align: center;  
+padding: 20px;
+}

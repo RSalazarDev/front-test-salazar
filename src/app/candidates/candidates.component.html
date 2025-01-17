@@ -1,0 +1,62 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" [formControl]="name" placeholder="Enter candidate's name" />
+      <mat-error *ngIf="name.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Surname</mat-label>
+      <input matInput id="surname" [formControl]="surname" placeholder="Enter candidate's surname" />
+      <mat-error *ngIf="surname.hasError('required')">Surname is required</mat-error>
+    </mat-form-field>
+
+    <div>
+      <label for="file">Excel File:</label>
+      <input
+        id="file"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept=".xls, .xlsx"
+      />
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="name.invalid || surname.invalid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+
+  <h3>Stored Candidates:</h3>
+  <table border="1" *ngIf="candidates.length > 0; else noCandidates">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Seniority</th>
+        <th>Years of Experience</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates">
+        <td>{{ candidate.name }}</td>
+        <td>{{ candidate.surname }}</td>
+        <td>{{ candidate.seniority }}</td>
+        <td>{{ candidate.experience }}</td>
+        <td>{{ candidate.availability }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noCandidates>
+    <p>No candidates available.</p>
+  </ng-template>
+</div>
